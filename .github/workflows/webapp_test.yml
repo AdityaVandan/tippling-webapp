@@ -15,6 +15,9 @@ jobs:
         fetch-depth: 0
         repository: AdityaVandan/tippling-mobile
         token: ${{ secrets.KEY }}
+    - name: submodule
+      shell: bash
+      run: git submodule update --init --recursive
     - name: setup
       shell: bash
       run: npm install
