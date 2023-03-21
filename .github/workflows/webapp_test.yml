@@ -18,6 +18,12 @@ jobs:
     - name: setup
       shell: bash
       run: npm install
+    - name: setup submodule
+      shell: bash
+      run: |
+        cd tippling-webapp
+        npm install
+        cd ..
     - name: bundle
       shell: bash
       run: npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output bundle-test.js
