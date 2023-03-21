@@ -1,0 +1,23 @@
+name: Validate if PR is mobile compatible
+on:
+  workflow_dispatch:
+
+jobs:
+  mobile-compatibility-check:
+    permissions: write-all
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+    - name: Checkout project with write access
+      uses: actions/checkout@v3
+      with:
+        ref: develop
+        fetch-depth: 0
+        repository: AdityaVandan/tippling-mobile
+        token: ${{ secrets.KEY }}
+    - name: setup
+      shell: bash
+      run: npm install
+    - name: bundle
+      shell: bash
+      run: npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output bundle-test.js
