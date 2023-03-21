@@ -24,7 +24,9 @@ jobs:
         cd tippling-webapp
         git checkout main
         npm install
+        echo start
         ls
+        echo end
         cd ..
     - name: bundle
       shell: bash
